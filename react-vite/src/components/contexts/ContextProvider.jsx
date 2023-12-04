@@ -22,7 +22,7 @@ export const ContextProvider = ({ children }) => {
     });
 
     // go zimame tokenot 
-    const [token, _setToken] = useState(123); // default value ke bide null
+    const [token, _setToken] = useState(null); // default value ke bide null
     // 123
     // localStorage.getItem('ACESS_TOKEN')
 
