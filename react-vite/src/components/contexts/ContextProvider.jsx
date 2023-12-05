@@ -15,16 +15,11 @@ const StateContext = createContext({
 
 export const ContextProvider = ({ children }) => {
     //  _setToken -> gotova funkcija 
-    const [user, setUser] = useState({
-        name: 'John',
-
-
-    });
+    const [user, setUser] = useState({});
 
     // go zimame tokenot 
-    const [token, _setToken] = useState(null); // default value ke bide null
-    // 123
-    // localStorage.getItem('ACESS_TOKEN')
+    const [token, _setToken] = useState(localStorage.getItem('ACESS_TOKEN'));
+    // za da bideme authorizirani, da immame acces vo aplikaciajta, da ne sme na login/signup page
 
     // ovaa f-ja prima token arg, ke go povika _setToken
     // za da go setirame toj token vo ramkite na stejtot 

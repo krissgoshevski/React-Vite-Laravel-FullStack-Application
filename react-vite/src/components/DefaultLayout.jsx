@@ -1,10 +1,16 @@
-import React from 'react'
-import { Navigate, Outlet, Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Outlet, Link, useNavigate } from 'react-router-dom'
 import { useStateContext } from './contexts/ContextProvider'
+import axiosClient from '../axios-client'
+import { Navigate } from 'react-router-dom'
+
+
 
 const DefaultLayout = () => {
 
-    const { user, token } = useStateContext();
+    const navigate = useNavigate();
+
+    const { user, token, setUser, setToken } = useStateContext();
     // ova go zimame od ContextProviderot,
     // useStateContext() poso vaka se vika exportiraniot context 
     // i ovde go imame userot i tokenot od contextProviderot 
@@ -21,14 +27,42 @@ const DefaultLayout = () => {
         return <Navigate to="/login" />
     }
 
-    const onLogout = (ev) => {
+
+    const onLogout = async (ev) => {
         ev.preventDefault();
 
-    }
+        try {
+            await axiosClient.post('/logout');
+            setUser({});
+            setToken(null);
+            navigate('/login');
+        } catch (error) {
+            console.error('Error logging out:', error);
+        }
+    };
+
+
+
+    // useEffect e hook , stavame callback , vtor arg e array
+    // ke go printame userot so negovite informacii (toj so e logiran)
+    // setUser metodata e od StateContext
+    useEffect(() => {
+        axiosClient.get('/user')
+            .then(({ data }) => {
+                setUser(data);
+            })
+            .catch(error => {
+                console.error('Error fetching user data:', error);
+                // Handle the error as needed (e.g., redirect to login page)
+            });
+    }, []);
+
+
+
+
 
     return (
         <div id='defaultLayout'>
-            default Layout
 
             <aside>
                 <Link to="/dashboard">Dashboard</Link>
@@ -42,8 +76,9 @@ const DefaultLayout = () => {
                     </div>
                     <div>
                         {user.name}
-                        <a href="#" onClick={onLogout} className='btn-logout' > Logout </a>
-                        User informations
+                        <Link to="/login" className='btn-logout' onClick={onLogout}>Logout</Link>
+                        {/* <a href="#logout" onClick={onLogout} className='btn-logout' > Logout </a> */}
+
                     </div>
                 </header>
                 <main>
@@ -53,6 +88,7 @@ const DefaultLayout = () => {
         </div>
     )
 }
+
 
 export default DefaultLayout
 

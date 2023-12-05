@@ -8,6 +8,7 @@ import NotFound from "./views-components/NotFound"
 import DefaultLayout from "./components/DefaultLayout"
 import GuestLayout from "./components/GuestLayout"
 import Dashboard from "./views-components/Dashboard"
+import UserForm from "./views-components/UserForm"
 //Navigate to="/users" za redirect
 // a ako kaj element koristime komponenta <users /> ova direktno ke ja otvori taa stranicata odma
 
@@ -29,6 +30,14 @@ const router = createBrowserRouter([
             {
                 path: '/users',
                 element: <Users />
+            },
+            {
+                path: '/users/new',
+                element: <UserForm key='userCreate' />
+            },
+            {
+                path: '/users/:id',
+                element: <UserForm key='userUpdate' />
             },
         ]
 

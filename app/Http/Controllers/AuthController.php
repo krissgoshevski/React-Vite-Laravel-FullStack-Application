@@ -10,6 +10,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 
 
+
 class AuthController extends Controller
 {
 
@@ -62,12 +63,13 @@ class AuthController extends Controller
 
    public function logout(Request $request)
    {
-      $user = $request->user();
-      $user->currectAcessToken()->delete();
-
-      return response('', 204); // succesfull logout, nothing to return 
-
-
+       $user = $request->user();
+       
+       // Fix the typo here
+       if( $user->currentAccessToken()->delete()){
+         return response('', 204); // successful logout, nothing to return 
+       }
 
    }
+   
 }
