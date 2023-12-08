@@ -6,8 +6,10 @@ const StateContext = createContext({
 
     user: null, // propertija
     token: null,
+    notification: null,
     setUser: () => { }, // funkcii
-    setToken: () => { }, // funkcii 
+    setToken: () => { }, // funkcii
+    setNotification: () => { }
 });
 
 // gi imamte informaciite za userot vo contextProviderot 
@@ -16,6 +18,15 @@ const StateContext = createContext({
 export const ContextProvider = ({ children }) => {
     //  _setToken -> gotova funkcija 
     const [user, setUser] = useState({});
+    const [notification, _setNotification] = useState('')
+
+    const setNotification = (message) => {
+        _setNotification(message);
+
+        setTimeout(() => {
+            _setNotification('') // posle 3 sekundi notifikaciajta da ja snema 
+        }, 3000)
+    }
 
     // go zimame tokenot 
     const [token, _setToken] = useState(localStorage.getItem('ACESS_TOKEN'));
@@ -43,6 +54,8 @@ export const ContextProvider = ({ children }) => {
             token,
             setUser,
             setToken,
+            notification,
+            setNotification
         }}>
             {children}
         </StateContext.Provider>

@@ -60,12 +60,19 @@ const SignUp = () => {
 
 
     return (
+
         <div className='login-signup-form animated fadeInDown'>
-            {errors && <div className='alert'>
-                {Object.keys(errors).map(key => (
-                    <p key={key}>{errors[key][0]}</p>
-                ))}
-            </div>}
+            {errors && (
+                <div className='alert'>
+                    {Object.keys(errors).map(key => (
+                        <p key={key}>{errors[key][0]}</p>
+                    ))}
+                </div>
+            )}
+
+
+
+
 
 
             <div className='form'>
@@ -84,7 +91,7 @@ const SignUp = () => {
                     </p>
                 </form>
             </div>
-        </div>
+        </div >
     )
 }
 

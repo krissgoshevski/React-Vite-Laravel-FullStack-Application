@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react'
-import { Outlet, Link, useNavigate } from 'react-router-dom'
+import { Outlet, Link } from 'react-router-dom'
 import { useStateContext } from './contexts/ContextProvider'
 import axiosClient from '../axios-client'
 import { Navigate } from 'react-router-dom'
 
 
 
+
 const DefaultLayout = () => {
 
-    const navigate = useNavigate();
 
-    const { user, token, setUser, setToken } = useStateContext();
+
+    const { user, token, setUser, setToken, notification } = useStateContext();
     // ova go zimame od ContextProviderot,
     // useStateContext() poso vaka se vika exportiraniot context 
     // i ovde go imame userot i tokenot od contextProviderot 
@@ -35,7 +36,7 @@ const DefaultLayout = () => {
             await axiosClient.post('/logout');
             setUser({});
             setToken(null);
-            navigate('/login');
+
         } catch (error) {
             console.error('Error logging out:', error);
         }
@@ -70,6 +71,11 @@ const DefaultLayout = () => {
             </aside>
 
             <div className='content'>
+                {notification &&
+                    <div className='notification'>
+                        {notification}
+                    </div>
+                }
                 <header>
                     <div>
                         Header
