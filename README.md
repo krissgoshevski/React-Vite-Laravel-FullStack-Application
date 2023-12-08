@@ -1,3 +1,27 @@
+NOTE: I used VITE with React for Frontend and Laravel framwork for Backend, 
+
+
+SKILLS: HTML, CSS, REACTJS, LARAVEL, MYSQL
+
+    This App include:
+    - Setup Laravel Project
+    - Setup React Project
+    - Installing and Configurating React Router
+    - Creating Multiple Layouts
+    - Working with Context API
+    - Create Protected Routes
+    - Guest Layout + Login, Signup
+    - Implement Signup in React
+    - Implement Signup, Login & Logout in API
+    - Implement Login
+    - Implement Logout
+    - Users CRUD in API
+    - Users CRUD in Frontend
+    - Implement Notification with React
+
+
+    
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
