@@ -27,7 +27,7 @@ if [ "$role" = "app" ]; then
     php artisan config:clear
     # portata ja imam deklarirano vo Dockerfile
     php artisan serve --port=$PORT --host=0.0.0.0 --env=.env
-    exec ./Docker/entrypoint.sh "$@"
+    exec ./entrypoint.sh "$@"
 elif [ "$role" = "queue" ]; then
     echo "Running the queue..."
     php /var/www/artisan queue:work --verbose --tries=3 --time --timeout=18
