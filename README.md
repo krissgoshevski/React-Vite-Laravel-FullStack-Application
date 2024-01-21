@@ -1,7 +1,7 @@
 NOTE: I used VITE with React for Frontend and Laravel framwork for Backend, 
 
 
-SKILLS: HTML, CSS, REACTJS, LARAVEL, MYSQL
+SKILLS: HTML, CSS, REACTJS, LARAVEL, MYSQL, Docker, GitBash
 
     This App include:
     - Setup Laravel Project
@@ -18,6 +18,14 @@ SKILLS: HTML, CSS, REACTJS, LARAVEL, MYSQL
     - Users CRUD in API
     - Users CRUD in Frontend
     - Implement Notification with React
+    
+    - Laravel Dockerization (Docker) include 6 containers:
+        1. PHP
+        2. WebSockets
+        3. Database
+        4. Redis
+        5. Queue
+        6. Node
 
 
     
